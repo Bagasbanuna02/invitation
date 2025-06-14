@@ -1,95 +1,77 @@
-import Image from "next/image";
-import styles from "./page.module.css";
 
-export default function Home() {
+
+"use client";
+
+import {
+  AppShell,
+  Button,
+  Container,
+  Stack,
+  Text,
+  Title,
+  Box,
+} from "@mantine/core";
+import { Header } from "@/components/header";
+// import { Footer } from "@/components/footer";
+// import { HeroSection } from "@/components/hero-section";
+// import { PricingSection } from "@/components/pricing-section";
+// import { DownloadSection } from "@/components/download-section";
+// import { StatsSection } from "@/components/stats-section";
+// import { GuestScreenSection } from "@/components/guest-screen-section";
+import { AnimatedSection } from "@/components/animated-section";
+import { Footer } from "@/components/footer";
+import { HeroSection } from "@/components/hero-section";
+import { FeatureSection } from "@/components/feature-section";
+import { PricingSection } from "@/components/pricing-section";
+import { StatsSection } from "@/components/stats-section";
+
+export default function HomePage() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+   
+    <AppShell header={{ height: 60 }}>
+      <AppShell.Header>
+        <Header />
+      </AppShell.Header>
+      <AppShell.Main style={{
+        marginBottom: 60
+      }}>
+        <HeroSection />
+        <Box py={60} bg="white">
+          <Container>
+            <AnimatedSection animation="fade-up">
+              <Stack align="center" gap="xl">
+                <Title order={2} ta="center" size="h1">
+                  Buat Undangan Pernikahanmu Sekarang
+                </Title>
+                <Text c="dimmed" ta="center" size="lg">
+                  dan hidupkan momen bahagiamu.
+                </Text>
+                <Button
+                  size="lg"
+                  radius="md"
+                  color="pink.7"
+                  onClick={() => {
+                    const element = document.querySelector("#harga");
+                    if (element) {
+                      element.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                >
+                  DAFTAR SEKARANG
+                </Button>
+              </Stack>
+            </AnimatedSection>
+          </Container>
+        </Box>
+        <FeatureSection />
+        <PricingSection />
+        <StatsSection />
+        {/* <DownloadSection /> */}
+        {/* <GuestScreenSection /> */}
+      </AppShell.Main>
+      <AppShell.Footer>
+        <Footer />
+      </AppShell.Footer>
+    </AppShell>
   );
 }
