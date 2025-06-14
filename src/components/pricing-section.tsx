@@ -13,15 +13,17 @@ import {
   rem,
   Box,
   SimpleGrid,
+  Center,
 } from "@mantine/core";
 import { IconCheck } from "@tabler/icons-react";
 import { AnimatedSection } from "./animated-section";
+import { COLOR } from "@/lib/color-palet";
 
 const pricingData = [
   {
     title: "GRATIS",
     price: "Rp0",
-    promo: "PROMO SAMPAI 30 JUNI 2025",
+    promo: "PROMO SAMPAI 30 DESEMBER 2025",
     features: [
       "1 Undangan Standar",
       "Aktif 1 bulan",
@@ -32,7 +34,7 @@ const pricingData = [
       "Pilihan Tema Terbatas",
       "Kado Cashless",
       "Link Streaming",
-      "Layar Penerima Tamu",
+      // "Layar Penerima Tamu",
     ],
     cta: "DAFTAR",
     color: "gray.0",
@@ -43,7 +45,7 @@ const pricingData = [
     price: "Rp69K",
     originalPrice: "IDR 100.000",
     discount: "31% OFF",
-    promo: "PROMO SAMPAI 30 JUNI 2025",
+    promo: "PROMO SAMPAI 30 DESEMBER 2025",
     features: [
       "1 Undangan Premium",
       "Aktif Selamanya",
@@ -54,12 +56,12 @@ const pricingData = [
       "Bebas Pilih Tema Premium",
       "Kado Cashless",
       "Link Streaming",
-      "Layar Penerima Tamu",
+      // "Layar Penerima Tamu",
       "Request Musik",
       "Story Instagram",
     ],
     cta: "DAFTAR",
-    color: "pink.7",
+    color: COLOR.pink,
     textColor: "white",
     featured: true,
   },
@@ -68,7 +70,7 @@ const pricingData = [
     price: "Rp99K",
     originalPrice: "IDR 200.000",
     discount: "50% OFF",
-    promo: "PROMO SAMPAI 30 JUNI 2025",
+    promo: "PROMO SAMPAI 30 DESEMBER 2025",
     features: [
       "2 Undangan Premium",
       "Aktif Selamanya",
@@ -79,7 +81,7 @@ const pricingData = [
       "Bebas Pilih Tema Premium",
       "Kado Cashless",
       "Link Streaming",
-      "Layar Penerima Tamu",
+      // "Layar Penerima Tamu",
       "Request Musik",
       "Story Instagram",
     ],
@@ -91,7 +93,13 @@ const pricingData = [
 
 export function PricingSection() {
   return (
-    <Box py={60} bg="pink.0" id="harga">
+    <Box
+      py={60}
+      bg={COLOR.pinkSoft}
+      id="harga"
+      style={{ borderRadius: "2rem" }}
+      mx={"md"}
+    >
       <Container size="lg">
         <AnimatedSection animation="fade-up">
           <Title order={2} ta="center" size="h1" mb={50}>
@@ -99,7 +107,7 @@ export function PricingSection() {
           </Title>
         </AnimatedSection>
 
-        <SimpleGrid cols={{ base: 1, md: 3 }} spacing="lg">
+        <SimpleGrid cols={{ base: 1, md: 3 }} spacing="xl">
           {pricingData.map((plan, index) => (
             <AnimatedSection
               key={index}
@@ -114,6 +122,7 @@ export function PricingSection() {
                 c={plan.textColor}
                 style={{
                   transform: plan.featured ? "scale(1.05)" : "none",
+                  borderRadius: "1rem",
                 }}
               >
                 <Card.Section withBorder p="md">
@@ -122,7 +131,7 @@ export function PricingSection() {
                   </Text>
                 </Card.Section>
 
-                <Group justify="apart" mt="md">
+                <Group justify="center" mt="md" align="center">
                   <Box>
                     <Text size="xl" span fw={700} style={{ fontSize: rem(40) }}>
                       {plan.price}
@@ -131,14 +140,14 @@ export function PricingSection() {
                       <Group gap={5} mt={5}>
                         <Text
                           td="line-through"
-                          c={plan.textColor === "white" ? "gray.3" : "gray.6"}
+                          c={plan.textColor === "white" ? "white" : "gray.6"}
                           size="sm"
                         >
                           {plan.originalPrice}
                         </Text>
                         <Badge
                           color={
-                            plan.textColor === "white" ? "pink.2" : "pink.6"
+                            plan.textColor === "white" ? COLOR.black : "pink.6"
                           }
                           variant="filled"
                         >
@@ -147,18 +156,17 @@ export function PricingSection() {
                       </Group>
                     )}
                   </Box>
+                  <Text
+                    size="xs"
+                    c={plan.textColor === "white" ? "gray.3" : "gray.6"}
+                    mt={5}
+                  >
+                    {plan.promo}
+                  </Text>
                 </Group>
 
-                <Text
-                  size="xs"
-                  c={plan.textColor === "white" ? "gray.3" : "gray.6"}
-                  mt={5}
-                >
-                  {plan.promo}
-                </Text>
-
                 <List
-                  spacing="sm"
+                  spacing="lg"
                   size="sm"
                   mt="md"
                   center
@@ -168,7 +176,10 @@ export function PricingSection() {
                       size={20}
                       radius="xl"
                     >
-                      <IconCheck size={12} />
+                      <IconCheck
+                        size={12}
+                        color={plan.textColor === "white" ? "black" : "white"}
+                      />
                     </ThemeIcon>
                   }
                 >
@@ -177,17 +188,27 @@ export function PricingSection() {
                   ))}
                 </List>
 
-                <Button
-                  fullWidth
-                  mt="xl"
-                  radius="md"
-                  color={plan.textColor === "white" ? "pink.2" : "pink.7"}
-                  variant={plan.textColor === "white" ? "white" : "filled"}
-                  component="a"
-                  href="/register"
-                >
-                  {plan.cta}
-                </Button>
+                <Center>
+                  <Button
+                    w={200}
+                    mt="xl"
+                    radius="xl"
+                    c={plan.textColor === "white" ? COLOR.black : "white"}
+                    color={
+                      plan.textColor === "white" ? COLOR.beige : COLOR.pink
+                    }
+                    variant={plan.textColor === "white" ? "gradient" : "filled"}
+                    gradient={{
+                      from: COLOR.pinkLight,
+                      to: COLOR.beige,
+                      deg: 170,
+                    }}
+                    component="a"
+                    href="/register"
+                  >
+                    {plan.cta}
+                  </Button>
+                </Center>
               </Card>
             </AnimatedSection>
           ))}

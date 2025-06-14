@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
+import { COLOR } from "@/lib/color-palet";
 import {
   Container,
   Group,
@@ -9,6 +11,7 @@ import {
   Stack,
   Text,
   Box,
+  Image,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import {
@@ -21,8 +24,8 @@ const links = [
   { link: "#home", label: "Home" },
   { link: "#fitur", label: "Fitur" },
   { link: "#harga", label: "Harga" },
-  { link: "#download", label: "Download" },
-  { link: "#layar-tamu", label: "Layar Tamu" },
+  // { link: "#download", label: "Download" },
+  // { link: "#layar-tamu", label: "Layar Tamu" },
 ];
 
 export function Header() {
@@ -43,6 +46,7 @@ export function Header() {
     <Text
       key={link.label}
       fw={500}
+      fz="sm"
       style={{ cursor: "pointer" }}
       onClick={() => handleNavClick(link.link)}
     >
@@ -54,20 +58,44 @@ export function Header() {
     <Box>
       <Container size="lg">
         <Group justify="space-between" h={60}>
-          <Group>
-            <Box
-              style={{
-                display: "flex",
-                alignItems: "center",
-                cursor: "pointer",
-              }}
-              onClick={() => handleNavClick("#home")}
-            >
-              <IconHeartFilled size={30} color="#c41677" />
-              <Text fw={700} size="lg" ml={5} c="#c41677">
+          <Group
+            gap={"xs"}
+            onClick={() => handleNavClick("#home")}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              cursor: "pointer",
+            }}
+          >
+            <Box>
+              <Image
+                src="/assets/logo2.png"
+                alt="Logo"
+                height={60}
+                width={60}
+              />
+            </Box>
+            <Stack align="center" gap={0} justify="left">
+              <Text
+                fw={700}
+                size="md"
+                ml={5}
+                c={COLOR.black}
+                style={{
+                  letterSpacing: "1px",
+                }}
+              >
                 Rajutmomen
               </Text>
-            </Box>
+              <Text
+                style={{
+                  fontSize: "7px",
+                }}
+                c={COLOR.black}
+              >
+                Undangan Pernikahan Digital
+              </Text>
+            </Stack>
           </Group>
 
           <Group visibleFrom="sm">
@@ -75,9 +103,9 @@ export function Header() {
               {items}
             </Group>
             <Group>
-              <IconBrandFacebook size={18} style={{ cursor: "pointer" }} />
+              {/* <IconBrandFacebook size={18} style={{ cursor: "pointer" }} /> */}
               <IconBrandInstagram size={18} style={{ cursor: "pointer" }} />
-              <Button radius="md" color="pink.7" component="a" href="/login">
+              <Button radius="md" variant="filled" color={COLOR.pink} component="a" href="/login">
                 Login
               </Button>
             </Group>
@@ -101,7 +129,7 @@ export function Header() {
       >
         <Stack>
           {items}
-          <Button radius="md" color="pink.7" component="a" href="/login">
+          <Button radius="md" variant="filled" color={COLOR.pink} component="a" href="/login">
             Login
           </Button>
         </Stack>

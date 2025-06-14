@@ -21,6 +21,7 @@ import {
   IconBrandWhatsapp,
 } from "@tabler/icons-react";
 import { AnimatedSection } from "./animated-section";
+import { COLOR } from "@/lib/color-palet";
 
 const features = [
   {
@@ -80,7 +81,7 @@ export function FeatureSection() {
           </Stack>
         </AnimatedSection>
 
-        <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing={30}>
+        <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing={50}>
           {features.map((feature, index) => (
             <AnimatedSection
               key={index}
@@ -91,9 +92,9 @@ export function FeatureSection() {
                 <ThemeIcon
                   size={60}
                   radius="md"
-                  variant="light"
-                  color="pink.1"
-                  c="pink.7"
+                  variant="gradient"
+                  gradient={{ from: COLOR.pinkLight, to: COLOR.beige, deg:80 }}
+                  c={COLOR.pink}
                 >
                   <feature.icon size={30} stroke={1.5} />
                 </ThemeIcon>

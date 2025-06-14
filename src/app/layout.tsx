@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Rajutmomen - Platform Undangan Pernikahan Digital",
+  title: "Rajutmomen | Platform Undangan Pernikahan Digital",
   description: "Platform undangan pernikahan digital yang praktis dan modern",
 };
 
