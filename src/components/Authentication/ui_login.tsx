@@ -81,14 +81,13 @@ export default function UILogin() {
               cursor: "pointer",
             }}
           >
-            <Box>
-              <Image
-                src="/assets/logo2.png"
-                alt="Logo"
-                height={100}
-                width={100}
-              />
-            </Box>
+            <Image
+              src="/assets/logo2.png"
+              alt="Logo"
+              h={60}
+              w={60}
+            />
+
             <Stack align="center" gap={0} justify="left">
               <Text
                 fw={700}
