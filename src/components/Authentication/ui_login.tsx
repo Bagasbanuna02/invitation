@@ -1,31 +1,25 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
-import {
-  Container,
-  Paper,
-  TextInput,
-  PasswordInput,
-  Button,
-  Title,
-  Text,
-  Anchor,
-  Stack,
-  Divider,
-  Box,
-  Group,
-  Image,
-  Center,
-} from "@mantine/core";
-import {
-  IconBrandGoogle,
-  IconBrandApple,
-  IconHeartFilled,
-  IconKey,
-} from "@tabler/icons-react";
-import { useForm } from "@mantine/form";
 import { COLOR } from "@/lib/color-palet";
+import {
+  Anchor,
+  Box,
+  Button,
+  Container,
+  Divider,
+  Group,
+  Paper,
+  PasswordInput,
+  Stack,
+  Text,
+  TextInput,
+  Title,
+} from "@mantine/core";
+import { useForm } from "@mantine/form";
+import { IconBrandApple, IconBrandGoogle, IconKey } from "@tabler/icons-react";
 import Link from "next/link";
+import { LogoAndBrandFooter, LogoAndBrandHeader } from "./share_components/logo_and_brand";
+
 
 export default function UILogin() {
   const form = useForm({
@@ -50,7 +44,7 @@ export default function UILogin() {
       style={{
         minHeight: "100vh",
         // backgroundColor: COLOR.pinkSoft,
-        background: `linear-gradient(180deg, ${COLOR.pink} 20%, ${COLOR.pinkSoft} 60%)`,
+        background: `linear-gradient(135deg, ${COLOR.pink} 0%, ${COLOR.pinkSoft} 100%)`,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -72,46 +66,7 @@ export default function UILogin() {
             </Text>
           </Stack>
         </Box> */}
-        <Center mb={30}>
-          <Group
-            gap={"xs"}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              cursor: "pointer",
-            }}
-          >
-            <Image
-              src="/assets/logo2.png"
-              alt="Logo"
-              h={60}
-              w={60}
-            />
-
-            <Stack align="center" gap={0} justify="left">
-              <Text
-                fw={700}
-                size={"30px"}
-                ml={5}
-                c={COLOR.white}
-                style={{
-                  letterSpacing: "1px",
-                }}
-              >
-                Rajutmomen
-              </Text>
-              <Text
-                style={{
-                  fontSize: "12px",
-                }}
-                c={COLOR.white}
-              >
-                Undangan Pernikahan Digital
-              </Text>
-            </Stack>
-          </Group>
-        </Center>
-
+        <LogoAndBrandHeader />
         <Paper
           w={{ base: "100%", md: "500px", sm: "420px" }}
           radius="md"
@@ -125,7 +80,7 @@ export default function UILogin() {
           }}
         >
           <Title order={2} ta="center" mb={5}>
-            Sign In
+            Login
           </Title>
 
           <form onSubmit={form.onSubmit(handleSubmit)}>
@@ -222,13 +177,7 @@ export default function UILogin() {
         </Paper>
 
         {/* Footer */}
-        <Text ta="center" mt={30} size="sm" c={COLOR.pink}>
-          Made with{" "}
-          <Text span c={COLOR.pink}>
-            ❤
-          </Text>{" "}
-          by Rajutmomen
-        </Text>
+        <LogoAndBrandFooter />
       </Container>
     </Box>
   );
