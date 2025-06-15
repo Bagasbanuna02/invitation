@@ -25,23 +25,26 @@ import {
   LogoAndBrandHeader,
 } from "./share_components/logo_and_brand";
 import { styleBoxAuth, stylePaperAuth } from "./share_components/styles_auth";
+import { useRouter } from "next/navigation";
 
 export default function UILogin() {
+  const router = useRouter();
   const [opened, { open, close }] = useDisclosure(false);
   const form = useForm({
     initialValues: {
       email: "",
       password: "",
     },
-    validate: {
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Email tidak valid"),
-      password: (value) =>
-        value.length < 6 ? "Password minimal 6 karakter" : null,
-    },
+    // validate: {
+    //   email: (value) => (/^\S+@\S+$/.test(value) ? null : "Email tidak valid"),
+    //   password: (value) =>
+    //     value.length < 6 ? "Password minimal 6 karakter" : null,
+    // },
   });
 
   const handleSubmit = (values: typeof form.values) => {
     console.log("Login attempt:", values);
+    router.push("/dashboard");
     // Handle login logic here
   };
 
@@ -64,7 +67,7 @@ export default function UILogin() {
             <Stack>
               <TextInput
                 label="Email"
-                required
+                // required
                 {...form.getInputProps("email")}
               />
 
@@ -77,7 +80,10 @@ export default function UILogin() {
                     Lupa Password ?
                   </Anchor>
                 </Group>
-                <PasswordInput required {...form.getInputProps("password")} />
+                <PasswordInput
+                  // required
+                  {...form.getInputProps("password")}
+                />
               </Box>
 
               <Button
@@ -183,7 +189,10 @@ export default function UILogin() {
             style={{ backgroundColor: COLOR.pink }}
             c={COLOR.white}
             size="md"
-            onClick={close}
+            onClick={() => {
+              close();
+              router.push("/dashboard");
+            }}
           >
             Sign In
           </Button>
