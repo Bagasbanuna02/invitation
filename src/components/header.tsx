@@ -67,7 +67,7 @@ export function Header() {
               cursor: "pointer",
             }}
           >
-            <Image src="/assets/logo2.png" alt="Logo" h={60} w={60} />
+            <Image src="/assets/logo2.png" alt="Logo" h={60} w={60} fit="fill" />
             <Stack align="center" gap={0} justify="left">
               <Text
                 fw={700}

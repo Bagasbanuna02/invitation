@@ -23,7 +23,7 @@ export function HeroSection() {
   };
 
   return (
-    <BackgroundImage src="/assets/background.png">
+    <BackgroundImage src="/assets/background3.jpg">
       <Box
         id="home"
         py={{ base: 60, md: 120 }}
@@ -37,8 +37,8 @@ export function HeroSection() {
         <Container size="lg">
           <Flex
             direction={{ base: "column", md: "row" }}
-            gap={{ base: "xl", md: 50 }}
-            justify="space-between"
+            gap={{ base: "xs", xs: "md", md: "md", lg: "lg", xl: "xl" }}
+            justify="space-around"
             align="center"
           >
             <AnimatedSection animation="slide-right">
@@ -75,25 +75,9 @@ export function HeroSection() {
                 <Image
                   src="/assets/new-mockup.png"
                   alt="Wedding invitation on mobile"
-                  w={340}
-                  // h={600}
+                  w={{ base: "100%", xs: 350, md: 450 }}
                   style={{ objectFit: "contain" }}
                 />
-                {/* <Group
-                  style={{ position: "absolute", bottom: "50%", width: "100%" }}
-                  justify="space-between"
-                >
-                  <IconChevronLeft
-                    size={32}
-                    color={COLOR.pink}
-                    style={{ cursor: "pointer" }}
-                  />
-                  <IconChevronRight
-                    size={32}
-                    color={COLOR.pink}"
-                    style={{ cursor: "pointer" }}
-                  />
-                </Group> */}
               </Box>
             </AnimatedSection>
           </Flex>
