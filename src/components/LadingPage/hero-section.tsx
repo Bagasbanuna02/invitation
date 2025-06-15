@@ -27,7 +27,6 @@ export function HeroSection() {
       <Box
         id="home"
         py={{ base: 60, md: 120 }}
-
         // style={{
         //   background: "linear-gradient(135deg, #f8f9fa 0%, #f0e6ea 100%)",
         //   position: "relative",
@@ -42,7 +41,7 @@ export function HeroSection() {
             align="center"
           >
             <AnimatedSection animation="slide-right">
-              <Box style={{ maxWidth: rem(600) }}>
+              <Box style={{ maxWidth: rem(500) }}>
                 <Title
                   order={1}
                   size="h1"
@@ -73,10 +72,10 @@ export function HeroSection() {
             <AnimatedSection animation="slide-left" delay={300}>
               <Box style={{ position: "relative" }}>
                 <Image
-                  src="/assets/new-mockup.png"
+                  src="/assets/new-mockup2.png"
                   alt="Wedding invitation on mobile"
-                  w={{ base: "100%", xs: 350, md: 450 }}
-                  style={{ objectFit: "contain" }}
+                  w={{ base: "100%" }}
+                  fit="fill"
                 />
               </Box>
             </AnimatedSection>

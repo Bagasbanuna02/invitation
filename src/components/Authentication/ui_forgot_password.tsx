@@ -2,24 +2,24 @@
 
 import { COLOR } from "@/lib/color-palet";
 import {
-    Alert,
-    Box,
-    Button,
-    Container,
-    Paper,
-    Stack,
-    Text,
-    TextInput,
-    Title
+  Alert,
+  Box,
+  Button,
+  Container,
+  Paper,
+  Stack,
+  Text,
+  TextInput,
+  Title,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import {
-    IconArrowLeft,
-    IconInfoCircle
-} from "@tabler/icons-react";
+import { IconArrowLeft, IconInfoCircle } from "@tabler/icons-react";
 import Link from "next/link";
 import { useState } from "react";
-import { LogoAndBrandFooter, LogoAndBrandHeader } from "./share_components/logo_and_brand";
+import {
+  LogoAndBrandFooter,
+  LogoAndBrandHeader,
+} from "./share_components/logo_and_brand";
 
 export default function UIForgotPassword() {
   const [emailSent, setEmailSent] = useState(false);
@@ -69,7 +69,7 @@ export default function UIForgotPassword() {
           <Title order={2} ta="center" mb={10} c="dark">
             Lupa Password
           </Title>
-          <Text ta="center" size="sm" c="dimmed" mb={30}>
+          <Text ta="center" size="xs" c="dark" mb={30}>
             Masukkan email Anda untuk mendapatkan link reset password
           </Text>
 
@@ -99,7 +99,6 @@ export default function UIForgotPassword() {
               <Stack>
                 <TextInput
                   label="Email"
-                  placeholder="Masukkan email Anda"
                   required
                   {...form.getInputProps("email")}
                 />

@@ -1,13 +1,12 @@
 import { COLOR } from "@/lib/color-palet";
 import { Center, Group, Image, Stack, Text } from "@mantine/core";
-
-export { LogoAndBrandHeader, LogoAndBrandFooter };
+export { LogoAndBrandFooter, LogoAndBrandHeader };
 
 const LogoAndBrandHeader = () => {
   return (
     <Center mb={30}>
       <Group
-        gap={"xs"}
+        gap={0}
         style={{
           display: "flex",
           alignItems: "center",
@@ -16,21 +15,21 @@ const LogoAndBrandHeader = () => {
       >
         <Image src="/assets/logo2.png" alt="Logo" h={60} w={60} />
 
-        <Stack align="center" gap={0} justify="left">
+        <Stack align="center" gap={0} justify="center">
           <Text
             fw={700}
-            size={"30px"}
-            ml={5}
+            size={"25px"}
+            // ml={5}
             c={COLOR.white}
             style={{
-              letterSpacing: "1px",
+              // letterSpacing: "1px",
             }}
           >
             Rajutmomen
           </Text>
           <Text
             style={{
-              fontSize: "12px",
+              fontSize: "11px",
             }}
             c={COLOR.white}
           >
@@ -49,3 +48,4 @@ const LogoAndBrandFooter = () => {
     </Text>
   );
 };
+

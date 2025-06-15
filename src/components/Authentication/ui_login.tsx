@@ -8,6 +8,7 @@ import {
   Container,
   Divider,
   Group,
+  Modal,
   Paper,
   PasswordInput,
   Stack,
@@ -16,68 +17,47 @@ import {
   Title,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { IconBrandApple, IconBrandGoogle, IconKey } from "@tabler/icons-react";
+import { useDisclosure } from "@mantine/hooks";
+import { IconKey } from "@tabler/icons-react";
 import Link from "next/link";
-import { LogoAndBrandFooter, LogoAndBrandHeader } from "./share_components/logo_and_brand";
-
+import {
+  LogoAndBrandFooter,
+  LogoAndBrandHeader,
+} from "./share_components/logo_and_brand";
+import { styleBoxAuth, stylePaperAuth } from "./share_components/styles_auth";
+import { useRouter } from "next/navigation";
 
 export default function UILogin() {
+  const router = useRouter();
+  const [opened, { open, close }] = useDisclosure(false);
   const form = useForm({
     initialValues: {
       email: "",
       password: "",
     },
-    validate: {
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Email tidak valid"),
-      password: (value) =>
-        value.length < 6 ? "Password minimal 6 karakter" : null,
-    },
+    // validate: {
+    //   email: (value) => (/^\S+@\S+$/.test(value) ? null : "Email tidak valid"),
+    //   password: (value) =>
+    //     value.length < 6 ? "Password minimal 6 karakter" : null,
+    // },
   });
 
   const handleSubmit = (values: typeof form.values) => {
     console.log("Login attempt:", values);
+    router.push("/dashboard");
     // Handle login logic here
   };
 
   return (
-    <Box
-      style={{
-        minHeight: "100vh",
-        // backgroundColor: COLOR.pinkSoft,
-        background: `linear-gradient(135deg, ${COLOR.pink} 0%, ${COLOR.pinkSoft} 100%)`,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "20px",
-      }}
-    >
+    <Box style={styleBoxAuth}>
       <Container size="xl">
         {/* Logo */}
-        {/* <Box ta="center" mb={40}>
-          <Group justify="center" mb={10}>
-            <IconHeartFilled size={40} color={COLOR.white} />
-          </Group>
-          <Stack>
-            <Text size="xl" fw={700} c={COLOR.pink}>
-              Rajutmomen
-            </Text>
-            <Text size="sm" c={COLOR.pink}>
-              online wedding invitation
-            </Text>
-          </Stack>
-        </Box> */}
+
         <LogoAndBrandHeader />
         <Paper
           w={{ base: "100%", md: "500px", sm: "420px" }}
-          radius="md"
-          p={30}
-          withBorder
-          shadow="md"
-          style={{
-            backgroundColor: COLOR.pinkLight,
-            transition: "all 0.3s ease",
-            // border: `2px solid gradient(90deg, ${COLOR.pink} 20%, ${COLOR.pinkSoft} 60%) ${COLOR.pink}`,
-          }}
+          shadow="xl"
+          style={stylePaperAuth}
         >
           <Title order={2} ta="center" mb={5}>
             Login
@@ -87,8 +67,7 @@ export default function UILogin() {
             <Stack>
               <TextInput
                 label="Email"
-                placeholder="Masukkan email Anda"
-                required
+                // required
                 {...form.getInputProps("email")}
               />
 
@@ -102,8 +81,7 @@ export default function UILogin() {
                   </Anchor>
                 </Group>
                 <PasswordInput
-                  placeholder="Masukkan password Anda"
-                  required
+                  // required
                   {...form.getInputProps("password")}
                 />
               </Box>
@@ -126,8 +104,8 @@ export default function UILogin() {
             label="ATAU"
             labelPosition="center"
             my="lg"
-            c={COLOR.white}
-            styles={{ label: { color: COLOR.white } }}
+            color={COLOR.black}
+            styles={{ label: { color: COLOR.black } }}
           />
 
           <Stack>
@@ -137,12 +115,12 @@ export default function UILogin() {
               fullWidth
               leftSection={<IconKey size={16} />}
               radius="md"
-              onClick={() => console.log("Login with access code")}
+              onClick={open}
             >
-              Masuk dengan kode akses
+              Masuk dengan kode
             </Button>
 
-            <Button
+            {/* <Button
               variant="default"
               fullWidth
               leftSection={<IconBrandGoogle size={16} />}
@@ -160,7 +138,7 @@ export default function UILogin() {
               onClick={() => console.log("Login with Apple")}
             >
               Masuk dengan Apple
-            </Button>
+            </Button> */}
 
             <Button
               variant="subtle"
@@ -179,6 +157,47 @@ export default function UILogin() {
         {/* Footer */}
         <LogoAndBrandFooter />
       </Container>
+
+      <Modal
+        opened={opened}
+        onClose={close}
+        centered
+        // title={"Login dengan kode akses"}
+        // styles={{
+        //   title: {
+        //     fontWeight: "bold",
+
+        //   },
+        //   header: {
+        //     borderBottom: "1px solid #ccc",
+        //   }
+        // }}
+      >
+        <Stack>
+          <TextInput
+            label={"Masukan Kode Akses"}
+            styles={{
+              label: { textAlign: "center", fontWeight: "bold", width: "100%" },
+            }}
+          />
+
+          <Button
+            type="submit"
+            fullWidth
+            mt="md"
+            radius="md"
+            style={{ backgroundColor: COLOR.pink }}
+            c={COLOR.white}
+            size="md"
+            onClick={() => {
+              close();
+              router.push("/dashboard");
+            }}
+          >
+            Sign In
+          </Button>
+        </Stack>
+      </Modal>
     </Box>
   );
 }

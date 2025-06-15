@@ -17,6 +17,7 @@ import {
   LogoAndBrandFooter,
   LogoAndBrandHeader,
 } from "./share_components/logo_and_brand";
+import { styleBoxAuth } from "./share_components/styles_auth";
 
 export default function UIRegister() {
   const form = useForm({
@@ -42,17 +43,8 @@ export default function UIRegister() {
   };
 
   return (
-    <Box
-      style={{
-        minHeight: "100vh",
-        background: `linear-gradient(135deg, ${COLOR.pink} 0%, ${COLOR.pinkSoft} 100%)`,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "20px",
-      }}
-    >
-      <Container size={"xl"}>
+    <Box style={styleBoxAuth}>
+      <Container size="xl">
         {/* Logo */}
         <LogoAndBrandHeader />
 
@@ -68,7 +60,7 @@ export default function UIRegister() {
             // border: `2px solid gradient(90deg, ${COLOR.pink} 20%, ${COLOR.pinkSoft} 60%) ${COLOR.pink}`,
           }}
         >
-          <Title order={2} ta="center" mb={30} c="dark">
+          <Title order={2} ta="center" mb={5}>
             Register
           </Title>
 
@@ -76,35 +68,31 @@ export default function UIRegister() {
             <Stack>
               <TextInput
                 label="Nama"
-                placeholder="Masukkan nama lengkap Anda"
                 required
                 {...form.getInputProps("name")}
               />
 
               <TextInput
                 label="Email"
-                placeholder="Masukkan email Anda"
                 required
                 {...form.getInputProps("email")}
               />
 
               <PasswordInput
                 label="Password"
-                placeholder="Masukkan password Anda"
                 required
                 {...form.getInputProps("password")}
               />
 
               <PasswordInput
                 label="Konfirmasi Password"
-                placeholder="Konfirmasi password Anda"
                 required
                 {...form.getInputProps("confirmPassword")}
               />
 
               <Button
-                type="submit"
                 fullWidth
+                type="submit"
                 mt="md"
                 radius="md"
                 style={{ backgroundColor: COLOR.pink }}
@@ -114,8 +102,8 @@ export default function UIRegister() {
               </Button>
 
               <Button
-                variant="subtle"
                 fullWidth
+                variant="subtle"
                 component={Link}
                 href="/login"
                 radius="md"
