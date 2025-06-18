@@ -5,12 +5,15 @@ import {
   ActionIcon,
   AppShell,
   Burger,
+  Button,
   Group,
   Image,
+  Modal,
   Skeleton,
   Text,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { notifications } from "@mantine/notifications";
 import { IconLogout } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
 
@@ -19,9 +22,34 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-    const router = useRouter();
+  const router = useRouter();
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
+
+  const [opened, { open, close }] = useDisclosure(false);
+
+  const handleLogout = async () => {
+    const response = await fetch("/api/auth/logout", {
+      method: "POST",
+    });
+
+    if (response.ok) {
+      notifications.show({
+        message: "Logout berhasil",
+        color: "green",
+        position: "top-center",
+      });
+      router.push("/");
+
+      return;
+    }
+
+    notifications.show({
+      message: "Logout gagal",
+      color: "red",
+      position: "top-center",
+    });
+  };
 
   return (
     <AppShell
@@ -60,9 +88,7 @@ export default function DashboardLayout({
             </Text>
           </Group>
 
-          <ActionIcon size="md" variant="subtle" onClick={() => {
-            router.push("/");
-          }}>
+          <ActionIcon size="md" variant="subtle" onClick={open}>
             <IconLogout color="red" />
           </ActionIcon>
         </Group>
@@ -76,6 +102,15 @@ export default function DashboardLayout({
           ))}
       </AppShell.Navbar>
       <AppShell.Main>{children}</AppShell.Main>
+      <Modal opened={opened} onClose={close} title="Logout" size="md" centered>
+        <Text>Are you sure you want to logout?</Text>
+        <Group justify="center" mt="md">
+          <Button variant="outline" onClick={close}>
+            Cancel
+          </Button>
+          <Button onClick={handleLogout}>Logout</Button>
+        </Group>
+      </Modal>
     </AppShell>
   );
 }

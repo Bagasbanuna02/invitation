@@ -26,6 +26,7 @@ import {
 } from "./share_components/logo_and_brand";
 import { styleBoxAuth, stylePaperAuth } from "./share_components/styles_auth";
 import { useRouter } from "next/navigation";
+import { notifications } from "@mantine/notifications";
 
 export default function UILogin() {
   const router = useRouter();
@@ -42,10 +43,36 @@ export default function UILogin() {
     // },
   });
 
-  const handleSubmit = (values: typeof form.values) => {
-    console.log("Login attempt:", values);
-    router.push("/dashboard");
+  const handleSubmit = async (values: typeof form.values) => {
     // Handle login logic here
+
+    const response = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      notifications.show({
+        // title: "Default notification",
+        message: `${data.message}`,
+        color: "red",
+        position: "top-center",
+      });
+      return;
+    }
+
+    notifications.show({
+      // title: "Default notification",
+      message: `${data.message}`,
+      color: "green",
+      position: "top-center",
+    });
+    router.push("/dashboard");
   };
 
   return (

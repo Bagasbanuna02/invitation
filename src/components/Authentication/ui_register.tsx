@@ -18,8 +18,11 @@ import {
   LogoAndBrandHeader,
 } from "./share_components/logo_and_brand";
 import { styleBoxAuth } from "./share_components/styles_auth";
+import { useRouter } from "next/navigation";
+import emailRegex from "@/lib/email-regex";
 
 export default function UIRegister() {
+  const router = useRouter();
   const form = useForm({
     initialValues: {
       name: "",
@@ -29,7 +32,7 @@ export default function UIRegister() {
     },
     validate: {
       name: (value) => (value.length < 2 ? "Nama minimal 2 karakter" : null),
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Email tidak valid"),
+      email: (value) => (emailRegex.test(value) ? null : "Email tidak valid"),
       password: (value) =>
         value.length < 6 ? "Password minimal 6 karakter" : null,
       confirmPassword: (value, values) =>
@@ -37,9 +40,24 @@ export default function UIRegister() {
     },
   });
 
-  const handleSubmit = (values: typeof form.values) => {
+  const handleSubmit = async (values: typeof form.values) => {
     console.log("Registration attempt:", values);
     // Handle registration logic here
+    const response = await fetch("/api/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to register user");
+    }
+
+    const data = await response.json();
+    console.log("User registered successfully", data);
+    router.replace("/login");
   };
 
   return (
