@@ -1,8 +1,10 @@
 import type React from "react";
 import "@mantine/core/styles.css";
+import "@mantine/notifications/styles.css";
 import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
+import { Notifications } from "@mantine/notifications";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +24,10 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body className={inter.className} cz-shortcut-listen="true">
-        <MantineProvider>{children}</MantineProvider>
+        <MantineProvider>
+          <Notifications />
+          {children}
+        </MantineProvider>
       </body>
     </html>
   );
