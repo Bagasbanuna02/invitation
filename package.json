@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "ver": "bunx commit-and-tag-version -- --prerelease"
+    "ver": "bunx commit-and-tag-version -- --prerelease",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@mantine/core": "^8.1.0",
