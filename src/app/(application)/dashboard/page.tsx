@@ -1,11 +1,11 @@
 "use client";
 
+import { Text } from "@mantine/core";
+
 export default function DashboardPage() {
   return (
     <div>
-      Anda Berhasil Login
-      <br />
-      Ambil piala nya sana 🗿
+      <Text>Ini Dashboard</Text>
     </div>
   );
 }
