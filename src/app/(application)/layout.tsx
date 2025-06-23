@@ -13,6 +13,7 @@ import {
   Skeleton,
   Stack,
   Text,
+  Title,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { notifications } from "@mantine/notifications";
@@ -26,6 +27,7 @@ import {
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
+import ApplicationTitleSection from "@/components/Application/share-component/title-section";
 
 export default function DashboardLayout({
   children,
@@ -103,7 +105,7 @@ export default function DashboardLayout({
       <AppShell.Header>
         <Group h="100%" px="md" justify="space-between">
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-          <Group gap={0} align="center" w="auto">
+          <Group gap={0} align="center" w="auto" hiddenFrom="sm">
             <Image
               src="/assets/logo2.png"
               alt="Logo"
@@ -115,6 +117,10 @@ export default function DashboardLayout({
               Rajutmomen
             </Text>
           </Group>
+
+          {/* <ApplicationTitleSection title={activePage?.label || ""} /> */}
+          <Title order={4} visibleFrom="sm">{activePage?.label || ""}</Title>
+
           <ActionIcon size="md" variant="subtle" onClick={handleLogout}>
             <IconLogout color="red" />
           </ActionIcon>
@@ -123,6 +129,13 @@ export default function DashboardLayout({
       <AppShell.Navbar p="md">
         <Group>
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+        </Group>
+
+        <Group gap={0} align="center" w="auto" justify="center" visibleFrom="sm">
+          <Image src="/assets/logo2.png" alt="Logo" h={40} w={40} fit="fill" />
+          <Text fw={700} size="md" ml={5} c={COLOR.black}>
+            Rajutmomen
+          </Text>
         </Group>
 
         <Stack gap={40} mt={"xl"}>
@@ -142,7 +155,7 @@ export default function DashboardLayout({
                 gap={"xs"}
                 onClick={() => router.push(item.link)}
               >
-                <item.icon size={40} />
+                <item.icon size={25} />
                 <Text ta="center" fz={"sm"}>
                   {item.label}
                 </Text>
