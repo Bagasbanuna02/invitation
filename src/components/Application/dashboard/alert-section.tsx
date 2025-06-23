@@ -1,12 +1,11 @@
 import { COLOR } from "@/lib/color-palet";
 import { Alert, Box, Button, Group, Stack, Text } from "@mantine/core";
-import { IconArrowUp, IconClock } from "@tabler/icons-react";
+import { IconClock, IconDiamond } from "@tabler/icons-react";
 
 export default function Dashboard_AlertSection() {
     return (
       <>
         <Stack>
-
           <Alert
             icon={<IconClock size={20} />}
             style={{
@@ -29,7 +28,7 @@ export default function Dashboard_AlertSection() {
                 </Text>
               </Box>
               <Button
-                leftSection={<IconArrowUp size={16} />}
+                leftSection={<IconDiamond size={16} />}
                 style={{ backgroundColor: COLOR.pink }}
                 radius="md"
                 size="sm"

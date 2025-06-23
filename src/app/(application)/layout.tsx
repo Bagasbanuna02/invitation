@@ -1,19 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
+import ApplicationTitleSection from "@/components/Application/share-component/title-section";
 import { COLOR } from "@/lib/color-palet";
 import {
   ActionIcon,
   AppShell,
   Burger,
-  Button,
   Group,
   Image,
-  Modal,
-  Skeleton,
   Stack,
-  Text,
-  Title,
+  Text
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { notifications } from "@mantine/notifications";
@@ -25,9 +22,6 @@ import {
   IconMail,
 } from "@tabler/icons-react";
 import { usePathname, useRouter } from "next/navigation";
-import Link from "next/link";
-import { useState } from "react";
-import ApplicationTitleSection from "@/components/Application/share-component/title-section";
 
 export default function DashboardLayout({
   children,
@@ -118,8 +112,10 @@ export default function DashboardLayout({
             </Text>
           </Group>
 
-          {/* <ApplicationTitleSection title={activePage?.label || ""} /> */}
-          <Title order={4} visibleFrom="sm">{activePage?.label || ""}</Title>
+          <ApplicationTitleSection
+            title={activePage?.label || ""}
+            visibleFrom="sm"
+          />
 
           <ActionIcon size="md" variant="subtle" onClick={handleLogout}>
             <IconLogout color="red" />
@@ -131,7 +127,13 @@ export default function DashboardLayout({
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
         </Group>
 
-        <Group gap={0} align="center" w="auto" justify="center" visibleFrom="sm">
+        <Group
+          gap={0}
+          align="center"
+          w="auto"
+          justify="center"
+          visibleFrom="sm"
+        >
           <Image src="/assets/logo2.png" alt="Logo" h={40} w={40} fit="fill" />
           <Text fw={700} size="md" ml={5} c={COLOR.black}>
             Rajutmomen

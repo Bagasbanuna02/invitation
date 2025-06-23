@@ -1,18 +1,10 @@
 import { COLOR } from "@/lib/color-palet";
+import { Anchor, Box, Button, Card, Group, Text, Title } from "@mantine/core";
 import {
-    Anchor,
-    Box,
-    Button,
-    Card,
-    Group,
-    Text,
-    Title
-} from "@mantine/core";
-import {
-    IconChevronRight,
-    IconGlobe,
-    IconHeart,
-    IconSettings,
+  IconChevronRight,
+  IconHeart,
+  IconSettings,
+  IconWorld,
 } from "@tabler/icons-react";
 import Link from "next/link";
 
@@ -68,7 +60,7 @@ export default function Dashboard_InvitationSection() {
                   Rabu, 13 Juni 2025
                 </Text>
                 <Group gap="xs" mt="xs">
-                  <IconGlobe size={14} color={COLOR.pink} />
+                  <IconWorld size={14} color={COLOR.pink} />
                   <Text size="sm" c={COLOR.pink}>
                     Lihat Web
                   </Text>

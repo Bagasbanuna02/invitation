@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { Stack } from "@mantine/core";
@@ -11,7 +10,7 @@ export default function DashboardPage() {
   return (
     <>
       <Stack>
-        {/* <ApplicationTitleSection title="Dashboard" /> */}
+        <ApplicationTitleSection title="Dashboard" hiddenFrom="sm" />
         <Dashboard_AlertSection />
         <Dashboard_StatsCardSection />
         <Dashboard_InvitationSection />
