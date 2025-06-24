@@ -50,12 +50,12 @@ export default function UIRegister() {
       },
       body: JSON.stringify(values),
     });
+    const data = await response.json();
 
     if (!response.ok) {
       throw new Error("Failed to register user");
     }
 
-    const data = await response.json();
     console.log("User registered successfully", data);
     router.replace("/login");
   };
