@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client";
 
 import ApplicationTitleSection from "@/components/Application/share-component/title-section";
@@ -30,8 +30,6 @@ export default function DashboardLayout({
 }) {
   const router = useRouter();
   const pathname = usePathname();
-  const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
-  const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
 
   const handleLogout = async () => {
     const response = await fetch("/api/auth/logout", {
