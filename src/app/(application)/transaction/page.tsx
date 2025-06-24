@@ -1,11 +1,14 @@
 "use client";
 
-import { Text } from "@mantine/core";
+import ApplicationTitleSection from "@/components/Application/share-component/title-section";
+import Dashboard_TransactionsPage from "@/components/Application/transaction/ui-transaction";
+import { Stack } from "@mantine/core";
 
 export default function TransactionPage() {
   return (
-    <div>
-      <Text>Ini Transaction</Text>
-    </div>
+    <Stack>
+      <ApplicationTitleSection title="Transaksi" hiddenFrom="sm" />
+      <Dashboard_TransactionsPage />
+    </Stack>
   );
 }
